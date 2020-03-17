@@ -7,20 +7,26 @@ Often when patients are tested for symptoms of Alzheimer’s disease, they are d
 
 Through a collaboration with a local Alzheimer's clinic, my lab has access to a large clinical data set of patients with Alzheimer’s disease. All patients were diagnosed with the Functional Assessment Staging Test (FAST; Reisberg, 1988) into stages ranging from 1-6. The FAST stage describes severity of symptoms in terms of one's ability to perform daily living activities, where higher FAST stages indicate greater severity of symptoms. For example, someone categorized into FAST stage 1 has no discernable deficits or symptoms. People categorized into FAST stage 3 need help with complicated tasks, like financial planning. But by the time people reach FAST stage 5 or 6, they need help with things like dressing and bathing. The following table presents a summary of FAST scores, typical characteristics, and the number of people in the data set with that score.
 
-| FAST score | Characteristics                         | Number |
-|:----------:|:--------------------------------------- |:------:|
-| 1          | No deficits whatsoever                  | 99     |
-| 2          | Subjective functional deficit           | 436    |
-| 3          | Difficulty accomplishing complex tasks  | 813    |
-| 4          | Requires help cooking & cleaning        | 944    |
-| 5          | Requires help selecting proper clothing | 210    |
-| 6          | Requires help dressing & bathing        | 145    |
+| FAST score | Characteristics                         | Patients |
+|:----------:|:--------------------------------------- |:--------:|
+| 1          | No deficits whatsoever                  | 99       |
+| 2          | Subjective functional deficit           | 436      |
+| 3          | Difficulty accomplishing complex tasks  | 813      |
+| 4          | Requires help cooking & cleaning        | 944      |
+| 5          | Requires help selecting proper clothing | 210      |
+| 6          | Requires help dressing & bathing        | 145      |
 
 For the 2,647 people in this data set, we have the results of a Mild Cognitive Impairment Screen (MCIS), which includes a battery of memory tasks, such as recognition memory, metamemory judgments, and triadic comparisons. However, for this project, I will focus on the task that relies heavily on episodic memory - the free recall task.
 
 The Free Recall Task
 --------------------
-In a free recall task, the participant is presented with a list of items and then asked to recall as many items from the list as possible, in any order.
+In a free recall task, the participant is presented with a list of items and then asked to recall as many items from the list as possible, in any order. In the MCIS, there are a total of four free recall tasks: three immediate free recall and one delayed free recall. The three immediate free recall tasks are delivered back-to-back-to-back with no delay between the presentation of the list and the recall of items. Participants hear a 10-item word list from the clinician, consisting of the words BUTTER, ARM, SHORE, LETTER, QUEEN, CABIN, POLE, TICKET, GRASS, ENGINE. For each of the immediate free recall tasks, words are presented in the same order each time within subjects. The word order is balanced between subjects.
+
+After the final immediate free recall task is complete, the participant completes an unrelated task in the MCIS. This other task generally takes about 2 to 5 minutes to complete. Then, without showing the participant the list again, the participant is again asked to recall as many items from the list as possible. Importantly, this delayed recall task is a surprise to the participant.
+
+The Data
+--------
+The dataset itself is binary and indicates whether the participant correctly recalled a word in a specific serial position for each list. 
 
 # Version 1
 My first nn was not so great
