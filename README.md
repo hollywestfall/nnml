@@ -56,9 +56,9 @@ The first version of the neural network was a multi-layer linear network. I used
     
 However, the training and testing accuracy reached asymptote quickly. Even after training for 150 epochs, both the train and test accuracy was close to 50% (train: 0.4918, test: 0.4826) (see Figure 1). 
 
-![alt text][first_nn]
+###### Figure 1: Train and Test Accuracy for Neural Network (Version 1)
 
-[first_nn]: https://github.com/hollywestfall/nnml/blob/master/first_nn.png "My First Neural Network"
+<img src="https://github.com/hollywestfall/nnml/blob/master/first_nn.png" width="600" height="400">
 
 While this network achieved an accuracy of greater than chance (1/6 = 0.1667), there was a lot of room for improvement. After consulting with an expert in the field, I implemented a number of recommended changes in the second version of the network.
 
@@ -77,6 +77,8 @@ In the second version of the neural network, I standarized the data set to avoid
     opt = torch.optim.Adam(net.parameters(), lr=1e-3)
 
 Implementing these changes substantially improved the accuracy of the neural network. After training for 200 epochs, the training accuracy reached 0.9651 and the testing accuracy reached 0.8392 (see Figure 2).
+
+###### Figure 2: Train and Test Accuracy for Neural Network (Version 2)
 
 <img src="https://github.com/hollywestfall/nnml/blob/master/second_nn.png" width="600" height="400">
 
