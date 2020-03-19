@@ -26,12 +26,20 @@ After the final immediate free recall task is complete, the participant complete
 
 The Data
 --------
-The dataset itself is binary and indicates whether the participant correctly recalled a word in a specific serial position for each list. 
+The dataset itself is binary and indicates whether the participant correctly recalled a word in a specific serial position for each list. For example, in the data snippet below, we see the data for the first immediate free recall task for a patient in FAST stage 3. The "1" in position X1 indicates that this patient correctly recalled the first item on the list. They also correctly recalled the third item and the last time. 
 
-# Version 1
-My first nn was not so great
+| FAST score | X1 | X2 | X3 | X4 | X5 | X6 | X7 | X8 | X9 | X10 |
+|:----------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|
+| 3          | 1  | 0  | 1  | 0  | 0  | 0  | 0  | 0  | 0  | 1   |
 
-Check out this here code:
+Each person has an associated 40-item vector containing data from the four 10-item free recall tasks. There were 2,647 patients total, resulting in a data matrix with dimensions 2,647 x 40.
+
+The Neural Network
+------------------
+The goal of the neural network was the classify patients into FAST stages by extracting patterns from the free recall performance data. Having the data set up in this way allows us to capture patterns of primacy and recency in the data. It does not capture information about the specific word that was recalled or the order in which words were recalled. 
+
+### Version 1
+The first version of the neural network was a multi-layer linear network. I used a sigmoid activation function, with my labels (the FAST score) in one-hot form. I also used an MSE loss function and the Adam optimizer:
 
     # create nn
     net = torch.nn.Sequential(torch.nn.Linear(40, 100), torch.nn.Sigmoid(),
@@ -44,18 +52,16 @@ Check out this here code:
     # create optimizer
     opt = torch.optim.Adam(net.parameters(), lr=1e-3)
     
-How neat!
-
-But the accuracy was not so good.
-
-Let's insert a figure!
+However, the training and testing accuracy reached asymptote quickly. Even after training for 150 epochs, both the train and test accuracy was close to 50% (train: 0.4918, test: 0.4826) (see Figure 1). 
 
 ![alt text][first_nn]
 
 [first_nn]: https://github.com/hollywestfall/nnml/blob/master/first_nn.png "My First Neural Network"
 
-# Version 2
-I made a bunch of changes! Check them out!
+While this network achieved an accuracy of greater than chance (1/6 = 0.1667), there was a lot of room for improvement. After consulting with an expert in the field, I implemented a number of recommended changes in the second version of the network.
+
+### Version 2
+In the second version of the neural network, I standarized the data set to avoid having only positive values. I also switched to a cross entropy loss function and left the labels in integer form. I also used a ReLU activation function:
 
     # create nn
     net = torch.nn.Sequential(torch.nn.Linear(40, 100), torch.nn.ReLU(), 
@@ -68,8 +74,14 @@ I made a bunch of changes! Check them out!
     # create optimizer
     opt = torch.optim.Adam(net.parameters(), lr=1e-3)
 
-Oh boy, let's have a look now!
+Implementing these changes substantially improved the accuracy of the neural network. After training for 200 epochs, the training accuracy reached 0.9651 and the testing accuracy reached 0.8392 (see Figure 2).
 
 ![alt text][second_nn]
 
 [second_nn]: https://github.com/hollywestfall/nnml/blob/master/second_nn.png "My Second Neural Network"
+
+With these improvments, the new network correctly classified the patient by FAST stage 5 out of 6 times (a five-fold improvement over chance performance!). This result is particularly remarkable, because the FAST categorization is made independently of the free recall performance.
+
+Future Directions
+
+Incorporate info from the same data set about the order in which words were recalled.
