@@ -7,6 +7,8 @@ Often when patients are tested for symptoms of Alzheimer’s disease, they are d
 
 Through a collaboration with a local Alzheimer's clinic, my lab has access to a large clinical data set of patients with Alzheimer’s disease. All patients were diagnosed with the Functional Assessment Staging Test (FAST; Reisberg, 1988) into stages ranging from 1-6. The FAST stage describes severity of symptoms in terms of one's ability to perform daily living activities, where higher FAST stages indicate greater severity of symptoms. For example, someone categorized into FAST stage 1 has no discernable deficits or symptoms. People categorized into FAST stage 3 need help with complicated tasks, like financial planning. But by the time people reach FAST stage 5 or 6, they need help with things like dressing and bathing. The following table presents a summary of FAST scores, typical characteristics, and the number of people in the data set with that score.
 
+###### Table 1: Characteristics of and Number of Patients in Each FAST Stage
+
 | FAST score | Characteristics                         | Patients |
 |:----------:|:--------------------------------------- |:--------:|
 | 1          | No deficits whatsoever                  | 99       |
@@ -76,9 +78,7 @@ In the second version of the neural network, I standarized the data set to avoid
 
 Implementing these changes substantially improved the accuracy of the neural network. After training for 200 epochs, the training accuracy reached 0.9651 and the testing accuracy reached 0.8392 (see Figure 2).
 
-![alt text][second_nn]
-
-[second_nn]: https://github.com/hollywestfall/nnml/blob/master/second_nn.png "My Second Neural Network"
+<img src="https://github.com/hollywestfall/nnml/blob/master/second_nn.png" width="600" height="400">
 
 With these improvments, the new network correctly classified the patient by FAST stage 5 out of 6 times (a five-fold improvement over chance performance!). This result is particularly remarkable, because the FAST categorization is made independently of the free recall performance.
 
