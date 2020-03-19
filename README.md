@@ -1,14 +1,11 @@
 Classification of Functional Assessment from Free Recall Performance in Alzheimer's Patients
 ============================================================================================
 
-Introduction
-------------
-Often when patients are tested for symptoms of Alzheimer’s disease, they are done through the use of brief cognitive measures, like tests of verbal abilities, categorization tasks, or memory tasks (CITE). People diagnosed with Alzheimer's disease tend to do poorly on episodic memory tasks (e.g., CITE CITE CITE).
+Often when patients are tested for symptoms of Alzheimer’s disease, they are done through the use of brief cognitive measures, like tests of verbal abilities, categorization tasks, or memory tasks. In particular, people diagnosed with Alzheimer's disease tend to have poor episodic memory - or memory for past events (Tulving, 1972) - and tend perform poorly on clinical tests of episodic memory (e.g., Storandt & Hill, 1989; Wilson, Bacon, Fox, & Kaszniak, 1983).
 
 Through a collaboration with a local Alzheimer's clinic, my lab has access to a large clinical data set of patients with Alzheimer’s disease. All patients were diagnosed with the Functional Assessment Staging Test (FAST; Reisberg, 1988) into stages ranging from 1-6. The FAST stage describes severity of symptoms in terms of one's ability to perform daily living activities, where higher FAST stages indicate greater severity of symptoms. For example, someone categorized into FAST stage 1 has no discernable deficits or symptoms. People categorized into FAST stage 3 need help with complicated tasks, like financial planning. But by the time people reach FAST stage 5 or 6, they need help with things like dressing and bathing. The following table presents a summary of FAST scores, typical characteristics, and the number of people in the data set with that score.
 
 ###### Table 1: Characteristics of and Number of Patients in Each FAST Stage
-
 | FAST score | Characteristics                         | Patients |
 |:----------:|:--------------------------------------- |:--------:|
 | 1          | No deficits whatsoever                  | 99       |
@@ -57,7 +54,6 @@ The first version of the neural network was a multi-layer linear network. I used
 However, the training and testing accuracy reached asymptote quickly. Even after training for 150 epochs, both the train and test accuracy was close to 50% (train: 0.4918, test: 0.4826) (see Figure 1). 
 
 ###### Figure 1: Train and Test Accuracy for Neural Network (Version 1)
-
 <img src="https://github.com/hollywestfall/nnml/blob/master/first_nn.png" width="600" height="400">
 
 While this network achieved an accuracy of greater than chance (1/6 = 0.1667), there was a lot of room for improvement. After consulting with an expert in the field, I implemented a number of recommended changes in the second version of the network.
@@ -79,11 +75,22 @@ In the second version of the neural network, I standarized the data set to avoid
 Implementing these changes substantially improved the accuracy of the neural network. After training for 200 epochs, the training accuracy reached 0.9651 and the testing accuracy reached 0.8392 (see Figure 2).
 
 ###### Figure 2: Train and Test Accuracy for Neural Network (Version 2)
-
 <img src="https://github.com/hollywestfall/nnml/blob/master/second_nn.png" width="600" height="400">
 
 With these improvments, the new network correctly classified the patient by FAST stage 5 out of 6 times (a five-fold improvement over chance performance!). This result is particularly remarkable, because the FAST categorization is made independently of the free recall performance.
 
-Future Directions
+Next Steps
+----------
 
-Incorporate info from the same data set about the order in which words were recalled.
+Possible next steps are to incorporate information from the same data set about the order in which words were recalled.
+
+References
+----------
+
+Reisberg, B. (1988). Functional assessment staging (FAST). *Psychopharmacology Bulletin, 24*(4), 653-659.
+
+Storandt, M., & Hill, R. D. (1989). Very mild senile dementia of the Alzheimer type: II. Psychometric test performance. *Archives of Neurology, 46*(4), 383-386.
+
+Tulving, E. (1972). Episodic and semantic memory. In E. Tulving, & W. Donaldson (Eds.), Organization of memory, (pp. 381-403). Academic Press.
+
+Wilson, R. S., Bacon, L. D., Fox, J. H., & Kaszniak, A. W. (1983). Primary memory and secondary memory in dementia of the Alzheimer type. *Journal of Clinical and Experimental Neuropsychology, 5*(4), 337-344.
